@@ -1,15 +1,3 @@
-/*
-  Warnings:
-
-  - You are about to drop the `Clinet` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropForeignKey
-ALTER TABLE `Request` DROP FOREIGN KEY `Request_clientId_fkey`;
-
--- DropTable
-DROP TABLE `Clinet`;
-
 -- CreateTable
 CREATE TABLE `Client` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
@@ -18,7 +6,20 @@ CREATE TABLE `Client` (
     `tel` VARCHAR(15) NOT NULL,
     `email` VARCHAR(255) NULL,
     `clientType` VARCHAR(50) NOT NULL,
-    `busniess` VARCHAR(50) NULL,
+    `business` VARCHAR(50) NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Request` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `projectType` VARCHAR(20) NOT NULL,
+    `lat` DECIMAL(7, 5) NOT NULL,
+    `lng` DECIMAL(7, 5) NOT NULL,
+    `monthlyBill` DECIMAL(10, 1) NOT NULL,
+    `yearlyYield` DECIMAL(7, 2) NOT NULL,
+    `clientId` INTEGER NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

@@ -5,10 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "generate:db": "npx prisma generate",
     "build:client": "cd client && npm run build",
     "install:client": "cd client && npm install",
     "dev": "nodemon --exec ts-node-esm ./src/index.ts",
-    "build": "npm run install:client && npm run build:client && tsc",
+    "build": "npm run generate:db &&  npm run install:client && npm run build:client && tsc",
     "start": "node ./build/index.js"
   },
   "keywords": [],
